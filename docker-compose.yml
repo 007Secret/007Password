@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  # 后端服务
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: 007password-backend
+    restart: unless-stopped
+    volumes:
+      - 007password-data:/app/data
+    environment:
+      - PORT=8080
+      - GIN_MODE=release
+    networks:
+      - 007password-network
+
+  # 前端服务 (包含Nginx)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: 007password-frontend
+    restart: unless-stopped
+    ports:
+      - "8081:80"  # 暴露到主机的8081端口
+    depends_on:
+      - backend
+    networks:
+      - 007password-network
+
+volumes:
+  007password-data:  # 持久化数据存储
+
+networks:
+  007password-network:
+    driver: bridge 
