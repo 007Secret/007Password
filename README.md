@@ -11,6 +11,19 @@
 - JWT令牌认证保障安全性
 - 支持Docker部署
 
+## 安全说明
+
+- 主密码用于生成SQLite数据库的加密密钥
+- 所有密码均以加密形式存储
+- 主密码不会在服务器端存储明文，将主密码用做SQLite数据库的密码
+- 请务必记住您的主密码，如果忘记将无法恢复数据
+
+## 技术栈
+
+- **后端**: Go, Gin框架, SQLite, SQLCipher, JWT
+- **前端**: Vue.js, Tailwind CSS, Axios
+- **部署**: Docker, Nginx
+
 ## 本地开发
 
 ### 后端
@@ -83,18 +96,10 @@ docker run --rm -v 007password-data:/data -v $(pwd):/backup alpine tar -czvf /ba
 docker run --rm -v 007password-data:/data -v $(pwd):/backup alpine sh -c "rm -rf /data/* && tar -xzvf /backup/007password-backup.tar.gz -C /"
 ```
 
-## 安全说明
-
-- 主密码用于生成SQLite数据库的加密密钥
-- 所有密码均以加密形式存储
-- 主密码不会在服务器端存储明文，将主密码用做SQLite数据库的密码
-- 请务必记住您的主密码，如果忘记将无法恢复数据
-
-## 技术栈
-
-- **后端**: Go, Gin框架, SQLite, SQLCipher, JWT
-- **前端**: Vue.js, Tailwind CSS, Axios
-- **部署**: Docker, Nginx
+## 页面效果
+![Image](https://github.com/007Secret/007Password/blob/main/image/list.png)
+![Image](https://github.com/007Secret/007Password/blob/main/image/add.png)
+![Image](https://github.com/007Secret/007Password/blob/main/image/import.png)
 
 ## 许可证
 
