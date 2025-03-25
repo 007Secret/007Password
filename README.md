@@ -24,6 +24,9 @@
 - **前端**: Vue.js, Tailwind CSS, Axios
 - **部署**: Docker, Nginx
 
+## 体验地址
+[https://password.007secret.com](https://password.007secret.com) 主密码：123456
+
 ## 本地开发
 
 ### 后端
